@@ -8,8 +8,29 @@ Advantages!
 
 <h1>Exporting and importing in JS</h1>
 
-```index.js
-const t =0;
+
+index.js
+```js
+//Named inline export 
+export const myObject = {
+  name: "John",
+  age: 30,
+  city: "New York"
+};
+
+//Named default inline export 
+export const myObject1 = {
+  name: "John",
+  age: 30,
+  city: "New York"
+};
+
+```
+
+app.js
+```js
+import {myObject} from './index.js'; // names import 
+import Object from './index.js'; // default import .
 ```
 
 <h1>Starting the project</h1>
