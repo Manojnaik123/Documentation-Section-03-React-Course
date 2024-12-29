@@ -29,8 +29,8 @@ Creating custome components
 > This is App.jsx file, the file initially had function App. We have added function Header to segregate the content and the header content is moved into this function.
 
 > In the belowe example the component Header and App are stored in a same file 
-```html
 
+```html
 function Header(){
     return (<header>
         <img src="src/assets/react-core-concepts.png" alt="Stylized atom" />
@@ -63,6 +63,7 @@ function App() {
 }
 
 export default App;
+```
 
 How to handle Components and How it builds a component tree 
 
