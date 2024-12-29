@@ -175,6 +175,7 @@ export default App;
 ```
 
 **This is the js file**
+
 ```js
 import componentsImg from './assets/components.png';
 import propsImg from './assets/config.png';
@@ -208,10 +209,11 @@ export const CORE_CONCEPTS = [
   },
 ];
 ```
-**Here is how we can destructure the component parameter **
+
+**Here is how we can destructure the component parameter**
 
 ```html
-function CoreConcepts({image, description, title}){
+function CoreConcepts({image, description="lorem ipsum", title}){ // description is set to a default value 
   return (
     <li>
       <img src={image} alt={image} />
@@ -221,8 +223,15 @@ function CoreConcepts({image, description, title}){
   );
 }
 ```
+<h1>Best Practice: Storing Components in Files & Using a Good Project Structure</h1>
 
+-It is best practive to store components in seperate file 
 
+-this will simplify the project 
+
+Folder structure 
+
+![alt text](image.png)
 
 
 
