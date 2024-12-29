@@ -114,6 +114,101 @@ Here reactImg is an js object that will point to the image address
 
 <h1>Making Components Reusable with Props [Core Concept]</h1>
 
+React allows us to pass data to components via a concept called *props*
+
+This is how we can pass the parameters to the component 
+
+```html
+import { CORE_CONCEPTS } from './data';
+const reactDescriptions = ['Fundamental', 'Crucial', 'Core'];
+
+function genRandomInt(max) {
+  return Math.floor(Math.random() * (max + 1));
+}
+
+function Header() {
+  return (
+    <header>
+      <img src="src/assets/react-core-concepts.png" alt="Stylized atom" />
+      <h1>React Essentials</h1>
+      <p>
+        Fundamental React concepts you will need for almost any app you are going to build!
+      </p>
+    </header>
+  );
+}
+
+function CoreConcepts(props){
+  return (
+    <li>
+      <img src={props.image} alt={props.image} />
+      <h3>{props.title}</h3>
+      <p>{props.description}</p>
+    </li>
+  );
+}
+
+function App() {
+  return (
+    <div>
+      <Header />
+      <main>
+        <section id='core-concepts'>
+          <h2>Core Comcepts</h2>
+          <ul>
+            <CoreConcepts 
+            title={CORE_CONCEPTS[0].title} 
+            description={CORE_CONCEPTS[0].description} 
+            image={CORE_CONCEPTS[0].image} // this is non smart way of passing the vlues 
+            />
+            <CoreConcepts {...CORE_CONCEPTS[1]}/> // here we can destructure the object so that the properties will get pass 
+            <CoreConcepts {...CORE_CONCEPTS[2]}/> // however property name inside the component should be same as prop of object passed
+            <CoreConcepts {...CORE_CONCEPTS[3]}/>
+          </ul>
+        </section>
+      </main>
+    </div>
+  );
+}
+
+export default App;
+```
+
+**This is the js file**
+```js
+import componentsImg from './assets/components.png';
+import propsImg from './assets/config.png';
+import jsxImg from './assets/jsx-ui.png';
+import stateImg from './assets/state-mgmt.png';
+
+export const CORE_CONCEPTS = [
+  {
+    image: componentsImg,
+    title: 'Components',
+    description:
+      'The core UI building block - compose the user interface by combining multiple components.',
+  },
+  {
+    image: jsxImg,
+    title: 'JSX',
+    description:
+      'Return (potentially dynamic) HTML(ish) code to define the actual markup that will be rendered.',
+  },
+  {
+    image: propsImg,
+    title: 'Props',
+    description:
+      'Make components configurable (and therefore reusable) by passing input data to them.',
+  },
+  {
+    image: stateImg,
+    title: 'State',
+    description:
+      'React-managed data which, when changed, causes the component to re-render & the UI to update.',
+  },
+];
+```
+
 
 
 
