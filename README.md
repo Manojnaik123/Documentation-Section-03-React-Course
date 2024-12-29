@@ -27,23 +27,21 @@ JSX and React Components
 Creating custome components 
 
 > This is App.jsx file, the file initially had function App. We have added function Header to segregate the content and the header content is moved into this function.
-```html
-<prev>
-    <code>
-        function Header(){
-        <header>
-            <img src="src/assets/react-core-concepts.png" alt="Stylized atom" />
-            <h1>React Essentials</h1>
-            <p>
-            Fundamental React concepts you will need for almost any app you are
-            going to build!
-            </p>
-        </header>
-    }
-    </code>
-</prev>   
 
-    
+> In the belowe example the component Header and App are stored in a same file 
+```html
+
+function Header(){
+    return (<header>
+        <img src="src/assets/react-core-concepts.png" alt="Stylized atom" />
+        <h1>React Essentials</h1>
+        <p>
+        Fundamental React concepts you will need for almost any app you are
+        going to build!
+        </p>
+    </header>);
+}
+      
 function App() {
   return (
     <div>
@@ -56,7 +54,7 @@ function App() {
         </p>
       </header> -->
       //here we have used the newly made component Header
-      <Header/>
+      <Header/> // or we can also write it as <Header></Header>
       <main>
         <h2>Time to get started!</h2>
       </main>
@@ -66,6 +64,9 @@ function App() {
 
 export default App;
 
+How to handle Components and How it builds a component tree 
+
+> index.jsx file is the first file loaded by the HTML file in the browser (here is where the react app boots up)
 
 
 
