@@ -29,8 +29,9 @@ Creating custome components
 > This is App.jsx file, the file initially had function App. We have added function Header to segregate the content and the header content is moved into this function.
 
 [
-    
-function Header(){
+<prev>
+    <code>
+        function Header(){
     <header>
         <img src="src/assets/react-core-concepts.png" alt="Stylized atom" />
         <h1>React Essentials</h1>
@@ -39,7 +40,10 @@ function Header(){
           going to build!
         </p>
       </header>
-}
+    }
+    </code>
+</prev>   
+
     
 function App() {
   return (
