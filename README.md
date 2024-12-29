@@ -90,7 +90,8 @@ export default App;
         Fundamental React concepts you will need for almost any app you are
         going to build!
         </p>
-    </header>```
+    </header>
+```
 
 #Setting HTML Attributes Dynamically & Loading Image Files
 if we import images like this `<img src="src/assets/react-core-concepts.png" alt="Stylized atom" />` them this might give raise to issue durign the deployment. 
