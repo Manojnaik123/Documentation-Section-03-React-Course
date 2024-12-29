@@ -6,6 +6,12 @@ Advantages!
 > Related code lives together (related HTML, CSS, JS)
 > Seperation of concerns (different components handle different data and logic)
 
+<h1>Exporting and importing in JS</h1>
+
+```index.js
+const t =0;
+```
+
 <h1>Starting the project</h1>
 
 >link to download starting project > https://github.com/academind/react-complete-guide-course-resources/blob/main/attachments/03%20React%20Essentials/01-starting-project.zip
@@ -233,6 +239,7 @@ Folder structure
 
 ![alt text](image.png)
 
+The component function can be a named export or a default 
 
 
 
