@@ -57,7 +57,7 @@ import Object from './index.js'; // default import .
 
 > In the belowe example the component Header and App are stored in a same file 
 
-```html
+```jsx
 function Header(){
     return (<header>
         <img src="src/assets/react-core-concepts.png" alt="Stylized atom" />
