@@ -208,7 +208,7 @@ export const CORE_CONCEPTS = [
   },
 ];
 ```
-##Here is how we can destructure the component parameter 
+***Here is how we can destructure the component parameter ***
 
 ```html
 function CoreConcepts({image, description, title}){
