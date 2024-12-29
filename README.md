@@ -109,7 +109,7 @@ export default App;
 > we can write js code inside this bracket 
 > For example 
 
-```HTML 
+```jsx 
 <header>
         <img src="src/assets/react-core-concepts.png" alt="Stylized atom" />
         <h1>React Essentials{Math.floor(Math.random()*(10))}</h1> /// here we have dynamically injected value into h1 using {}
@@ -131,7 +131,7 @@ if we import images like this
 them this might give raise to issue durign the deployment. 
 
 Insted we can import the image *Example* 
-``` HTML 
+```jsx 
 import reactImg from './assets/react-core-concepts.png'
 
 <img src={reactImg} alt="Stylized atom" />
@@ -145,7 +145,7 @@ React allows us to pass data to components via a concept called *props*
 
 This is how we can pass the parameters to the component 
 
-```html
+```jsx
 import { CORE_CONCEPTS } from './data';
 const reactDescriptions = ['Fundamental', 'Crucial', 'Core'];
 
@@ -239,7 +239,7 @@ export const CORE_CONCEPTS = [
 
 **Here is how we can destructure the component parameter**
 
-```html
+```jsx
 function CoreConcepts({image, description="lorem ipsum", title}){ // description is set to a default value 
   return (
     <li>
