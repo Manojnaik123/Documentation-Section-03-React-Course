@@ -94,10 +94,14 @@ export default App;
 ```
 
 <h1>Setting HTML Attributes Dynamically & Loading Image Files</h1>
-if we import images like this `<img src="src/assets/react-core-concepts.png" alt="Stylized atom" />` them this might give raise to issue durign the deployment. 
+if we import images like this ```HTML<img src="src/assets/react-core-concepts.png" alt="Stylized atom" />
+``` them this might give raise to issue durign the deployment. 
 
-Insted we can import the image *Example* `import reactImg from './assets/react-core-concepts.png` and `<img src={reactImg} alt="Stylized atom" />`
+Insted we can import the image *Example* 
+``` HTML import reactImg from './assets/react-core-concepts.png'
 
+<img src={reactImg} alt="Stylized atom" />
+```
 Here reactImg is an js object that will point to the image address 
 
 
