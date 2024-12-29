@@ -275,6 +275,7 @@ Then importing it into the relevent component
 
 ![alt text](image-4.png)
 
+-Warning- These styles are not automatically restricted to the corresponding component (later we will learn how it is done)
 
 
 
