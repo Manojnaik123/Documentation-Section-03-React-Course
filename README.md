@@ -284,10 +284,24 @@ _Warning_ These styles are not automatically restricted to the corresponding com
 or 
 ![alt text](image-7.png)
 
-the props.children property takes what ever there is between the TabButton element. In this case it is Components text
+The props.children property takes what ever there is between the TabButton element. In this case it is Components text
 
 This approach of wrapping something in a component is called ***component composition***
 
+<h1>Reacting to Events [Core Concept]</h1>
+
+```jsx
+export default function TabButton({children}){
+    function handleClick(){
+        console.log("hello world");
+    }
+
+    return(
+        <li><button onClick={handleClick}>{children}</button></li> // this is the correct way to do
+        // <li><button onClick={handleClick()}>{children}</button></li> if we rigiht like this the fun will execute when the line gets executes and that we do not want
+    );
+}
+```
 
 
 
