@@ -94,7 +94,9 @@ export default App;
 ```
 
 <h1>Setting HTML Attributes Dynamically & Loading Image Files</h1>
-if we import images like this ```HTML<img src="src/assets/react-core-concepts.png" alt="Stylized atom" />
+if we import images like this 
+
+```HTML<img src="src/assets/react-core-concepts.png" alt="Stylized atom" />
 ``` them this might give raise to issue durign the deployment. 
 
 Insted we can import the image *Example* 
