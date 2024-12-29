@@ -68,6 +68,9 @@ export default App;
 How to handle Components and How it builds a component tree 
 
 > index.jsx file is the first file loaded by the HTML file in the browser (here is where the react app boots up)
+> this index.jsx file will inject the root component that is (App.jsx) into the index.html. And the nested components are rendered inside App.jsx. 
+
+![alt text](image.png)
 
 
 
