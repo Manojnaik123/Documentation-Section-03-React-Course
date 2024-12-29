@@ -92,6 +92,10 @@ export default App;
         </p>
     </header>```
 
+#Setting HTML Attributes Dynamically & Loading Image Files
+if we import images like this `<img src="src/assets/react-core-concepts.png" alt="Stylized atom" />` them this might give raise to issue durign the deployment. 
+
+Insted we can import the image *Example* `import reactImg from './assets/react-core-concepts.png`
 
 
 
