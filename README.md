@@ -208,6 +208,19 @@ export const CORE_CONCEPTS = [
   },
 ];
 ```
+##Here is how we can destructure the component parameter 
+
+```html
+function CoreConcepts({image, description, title}){
+  return (
+    <li>
+      <img src={image} alt={image} />
+      <h3>{title}</h3>
+      <p>{description}</p>
+    </li>
+  );
+}
+```
 
 
 
