@@ -262,9 +262,18 @@ Folder structure
 
 The component function can be a named export or a default 
 
+**Importing and exporting components**
+![alt text](image-1.png) ![alt text](image-2.png)
 
 
+<h1>Storing Component Style Files Next To Components</h1>
+creating a new file inside components Header.css and adding relevent css code inside it 
 
+![alt text](image-3.png)
+
+Then importing it into the relevent component 
+
+![alt text](image-4.png)
 
 
 
