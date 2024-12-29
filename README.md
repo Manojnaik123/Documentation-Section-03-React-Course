@@ -275,9 +275,18 @@ Then importing it into the relevent component
 
 ![alt text](image-4.png)
 
--Warning- These styles are not automatically restricted to the corresponding component (later we will learn how it is done)
+_Warning_ These styles are not automatically restricted to the corresponding component (later we will learn how it is done)
 
+<h1> Component Composition: The special "children" Prop [Core Concept]</h1>
 
+![alt text](image-5.png)
+![alt text](image-6.png)
+or 
+![alt text](image-7.png)
+
+the props.children property takes what ever there is between the TabButton element. In this case it is Components text
+
+This approach of wrapping something in a component is called ***component composition***
 
 
 
