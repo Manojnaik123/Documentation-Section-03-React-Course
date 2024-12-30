@@ -371,3 +371,16 @@ export default function TabButton({onSelect, children}){
     );
 }
 ```
+<h1>Managing State & Using Hooks [Core Concept]</h1>
+
+To use state we have to import the *'useState()'* from 'react'. 
+All the functions that starts from use are react hooks and they must be called inside react component function or other react hooks or custom react hooks(we will learn about them later in this course);
+
+UseState must be called at the top level of the component function it should not be inside nested function or other statements. 
+
+![alt text](image-14.png)
+
+
+
+
+

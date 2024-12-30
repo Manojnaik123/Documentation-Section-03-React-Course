@@ -4,17 +4,25 @@ import CoreConcepts from './Components/CoreConcepts.jsx';
 const reactDescriptions = ['Fundamental', 'Crucial', 'Core'];
 import TabButton from './Components/TabButton.jsx';
 
+import { useState } from 'react';
+
 function genRandomInt(max) {
   return Math.floor(Math.random() * (max + 1));
 }
 
 
 function App() {
-  let tabContent = "please click a button";
+
+  const [selectedTopic, setSelectedTopic] = useState('Please ckick a button first');
+  // this useState will return an array with excatly 2 elements
+  // one element will be current data snapshot
+  // other one will be a function to change that current data  
 
   function handleClick(selectedButton) {
-    tabContent = selectedButton;
-    console.log(tabContent);
+    //useState(); WRONG WAY TO USE THIS HOOK
+    setSelectedTopic(selectedButton);
+    console.log(selectedTopic);
+    
   }
 
   return (
@@ -37,12 +45,12 @@ function App() {
         <section id='examples'>
           <h2>Examples</h2>
           <menu>
-            <TabButton onSelect={()=> handleClick('Components')}>Components</TabButton>
-            <TabButton onSelect={()=> handleClick('JSX')}>JSX</TabButton>
-            <TabButton onSelect={()=> handleClick('Props')}>Props</TabButton>
-            <TabButton onSelect={()=> handleClick('State')}>State</TabButton>
+            <TabButton onSelect={() => handleClick('Components')}>Components</TabButton>
+            <TabButton onSelect={() => handleClick('JSX')}>JSX</TabButton>
+            <TabButton onSelect={() => handleClick('Props')}>Props</TabButton>
+            <TabButton onSelect={() => handleClick('State')}>State</TabButton>
           </menu>
-          {tabContent}
+          {selectedTopic}
         </section>
       </main>
     </div>
