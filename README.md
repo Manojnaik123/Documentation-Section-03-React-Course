@@ -378,7 +378,9 @@ All the functions that starts from use are react hooks and they must be called i
 
 UseState must be called at the top level of the component function it should not be inside nested function or other statements. 
 
-![alt text](image-14.png)
+![alt text](image-15.png)
+
+//***** The state value showing previous value is explained at 9:26 continue from there 
 
 
 

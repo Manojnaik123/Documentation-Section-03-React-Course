@@ -22,7 +22,8 @@ function App() {
     //useState(); WRONG WAY TO USE THIS HOOK
     setSelectedTopic(selectedButton);
     console.log(selectedTopic);
-    
+    // this log will output previsos value this is because Lec 54 9:30
+    // when we call the setSelectedTopic function 
   }
 
   return (
