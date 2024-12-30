@@ -711,3 +711,72 @@ React.createElement(
   )
 )
 ```
+
+<h2>Working with Fragments</h2>
+
+While returning jsx code we should binh the elements inside a parent component like-
+
+```jsx
+return (
+    <div> // or we can use <></> instead of div 
+      <Header />
+      <main>
+        <section id='core-concepts'>
+          <h2>Core Comcepts</h2>
+          <ul>
+            {CORE_CONCEPTS.map((conceptItem)=> (
+              <CoreConcepts key={conceptItem.title} {...conceptItem} />
+            ))}
+            
+          </ul>
+        </section>
+        <section id='examples'>
+          <h2>Examples</h2>
+          <menu>
+            <TabButton onSelect={() => handleClick('components')} isActive={selectedTopic==='components'}>Components</TabButton>
+            <TabButton onSelect={() => handleClick('jsx')} isActive={selectedTopic==='jsx'}>JSX</TabButton>
+            <TabButton onSelect={() => handleClick('props')} isActive={selectedTopic==='props'}>Props</TabButton>
+            <TabButton onSelect={() => handleClick('state')} isActive={selectedTopic==='state'}>State</TabButton>
+          </menu>
+          {tabContent}
+        </section>
+      </main>
+    </div>
+  );
+```
+
+OR ELSE it will give raise to error like below
+Here there there are multiple elements inside the return jsx code 
+```jsx
+return (
+    
+      <Header />
+      <main>
+        <section id='core-concepts'>
+          <h2>Core Comcepts</h2>
+          <ul>
+            {CORE_CONCEPTS.map((conceptItem)=> (
+              <CoreConcepts key={conceptItem.title} {...conceptItem} />
+            ))}
+            
+          </ul>
+        </section>
+        <section id='examples'>
+          <h2>Examples</h2>
+          <menu>
+            <TabButton onSelect={() => handleClick('components')} isActive={selectedTopic==='components'}>Components</TabButton>
+            <TabButton onSelect={() => handleClick('jsx')} isActive={selectedTopic==='jsx'}>JSX</TabButton>
+            <TabButton onSelect={() => handleClick('props')} isActive={selectedTopic==='props'}>Props</TabButton>
+            <TabButton onSelect={() => handleClick('state')} isActive={selectedTopic==='state'}>State</TabButton>
+          </menu>
+          {tabContent}
+        </section>
+      </main>
+    
+  );
+```
+Having an extra div in our website is totally unnecessary that is why we can use (<Fragment></Fragment> (import this fragment from react) or simply using <></> without the need to import) this wraping element to reduce the div usage 
+
+
+<h2>  When Should You Split Components?</h2>
+
