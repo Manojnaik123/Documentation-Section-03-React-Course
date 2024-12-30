@@ -836,13 +836,84 @@ Tabs.jsx
 export default function Tabs({buttons, children}){
     return <>
         <menu>
-        {buttons}
+        {buttons} // slot 1
         </menu>
-        {children}
+        {children} // slot 2
     </>
 }
 ```
 **This is how we can work with multiple JSX slots**
+
+<h2>Settings Component Types Dynamically</h2>
+
+Instead of above Tabs.jsx where we have used menu statically we can set it dynamically 
+
+Using built in html element 
+App.jsx
+```jsx
+return <>
+        <section id='examples'>
+        <h2>Examples</h2>
+            <Tabs
+            buttonsContainers="menu"
+             buttons={<>
+             <TabButton onSelect={() => handleClick('components')} isActive={selectedTopic === 'components'}>Components</TabButton>
+                <TabButton onSelect={() => handleClick('jsx')} isActive={selectedTopic === 'jsx'}>JSX</TabButton>
+                <TabButton onSelect={() => handleClick('props')} isActive={selectedTopic === 'props'}>Props</TabButton>
+                <TabButton onSelect={() => handleClick('state')} isActive={selectedTopic === 'state'}>State</TabButton>
+             </>}>
+             {tabContent}
+             </Tabs>
+        </section>
+    </>
+```
+
+Using custom element in above code 
+
+App.jsx
+```jsx
+return <>
+        <section id='examples'>
+        <h2>Examples</h2>
+            <Tabs
+            buttonsContainers={CustomComponent}
+             buttons={<>
+             <TabButton onSelect={() => handleClick('components')} isActive={selectedTopic === 'components'}>Components</TabButton>
+                <TabButton onSelect={() => handleClick('jsx')} isActive={selectedTopic === 'jsx'}>JSX</TabButton>
+                <TabButton onSelect={() => handleClick('props')} isActive={selectedTopic === 'props'}>Props</TabButton>
+                <TabButton onSelect={() => handleClick('state')} isActive={selectedTopic === 'state'}>State</TabButton>
+             </>}>
+             {tabContent}
+             </Tabs>
+        </section>
+    </>
+```
+
+Tabs.jsx
+```jsx
+export default function Tabs({ buttons, children, buttonsContainers }) {
+    const ButtonsContainers = buttonsContainers; // adding this line will store buttonsContainers in new variable that starts with uppercase charecter
+    return <>
+        <ButtonsContainers>
+            {buttons} // slot 1
+        </ButtonsContainers>
+        {children} // slot 2
+    </>
+}
+```
+
+Instead this line "const ButtonsContainers = buttonsContainers; " we can simply add property with uppercase first charecter like-
+
+```jsx 
+export default function Tabs({ buttons, children, ButtonsContainers }) {
+    return <>
+        <ButtonsContainers>
+            {buttons} // slot 1
+        </ButtonsContainers>
+        {children} // slot 2
+    </>
+}
+```
 
 
 
