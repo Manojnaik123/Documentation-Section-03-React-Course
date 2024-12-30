@@ -693,3 +693,21 @@ Here it is required by react to have key for the each list ti unique identificat
 <h1><b>Section 4: React Essentials - Components, JSX, Props, State & more</b></h1>
 
 <h2>You dont have to use JSX</h2>
+
+```jsx
+<div id="content">
+  <p>Hello world!</p>
+</div>
+```
+Instead we can use this alternative 
+```js
+React.createElement(
+  'div',
+  {id: 'content'},
+  React.createElement(
+    'p',
+    null,
+    'Hello world!'
+  )
+)
+```
