@@ -10,6 +10,13 @@ function genRandomInt(max) {
 
 
 function App() {
+  let tabContent = "please click a button";
+
+  function handleClick(selectedButton) {
+    tabContent = selectedButton;
+    console.log(tabContent);
+  }
+
   return (
     <div>
       <Header />
@@ -29,12 +36,13 @@ function App() {
         </section>
         <section id='examples'>
           <h2>Examples</h2>
-            <menu>
-              <TabButton>Components</TabButton>
-              <TabButton>JSX</TabButton>
-              <TabButton>Props</TabButton>
-              <TabButton>State</TabButton>
-            </menu>
+          <menu>
+            <TabButton onSelect={()=> handleClick('Components')}>Components</TabButton>
+            <TabButton onSelect={()=> handleClick('JSX')}>JSX</TabButton>
+            <TabButton onSelect={()=> handleClick('Props')}>Props</TabButton>
+            <TabButton onSelect={()=> handleClick('State')}>State</TabButton>
+          </menu>
+          {tabContent}
         </section>
       </main>
     </div>

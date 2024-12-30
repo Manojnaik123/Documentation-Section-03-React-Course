@@ -292,16 +292,81 @@ This approach of wrapping something in a component is called ***component compos
 
 ```jsx
 export default function TabButton({children}){
-    function handleClick(){
+    function handleClick(selectedButton){
         console.log("hello world");
     }
 
     return(
         <li><button onClick={handleClick}>{children}</button></li> // this is the correct way to do
-        // <li><button onClick={handleClick()}>{children}</button></li> if we rigiht like this the fun will execute when the line gets executes and that we do not want
+        // <li><button onClick={handleClick()}>{children}</button></li> 
+        // if we rigiht like this the fun will execute when the line gets executes and that we do not want
     );
 }
 ```
+<h1>Passing Functions as Values to Props</h1>
 
+![alt text](image-8.png)
 
+![alt text](image-9.png)
 
+<h1>Passing Custom Arguments to Event Functions</h1>
+
+![alt text](image-12.png)
+
+![alt text](image-13.png)
+
+<h1>How NOT to Update the UI - A Look Behind The Scenes of React [Core Concept]</h1>
+
+```jsx
+function App() {
+  let tabContent = "please click a button";
+
+  function handleClick(selectedButton) {
+    tabContent = selectedButton;
+    console.log(tabContent);
+  }
+
+  return (
+    <div>
+      <Header />
+      <main>
+        <section id='core-concepts'>
+          <h2>Core Comcepts</h2>
+          <ul>
+            <CoreConcepts
+              title={CORE_CONCEPTS[0].title}
+              description={CORE_CONCEPTS[0].description}
+              image={CORE_CONCEPTS[0].image}
+            />
+            <CoreConcepts {...CORE_CONCEPTS[1]} />
+            <CoreConcepts {...CORE_CONCEPTS[2]} />
+            <CoreConcepts {...CORE_CONCEPTS[3]} />
+          </ul>
+        </section>
+        <section id='examples'>
+          <h2>Examples</h2>
+          <menu>
+            <TabButton onSelect={()=> handleClick('Components')}>Components</TabButton>
+            <TabButton onSelect={()=> handleClick('JSX')}>JSX</TabButton>
+            <TabButton onSelect={()=> handleClick('Props')}>Props</TabButton>
+            <TabButton onSelect={()=> handleClick('State')}>State</TabButton>
+          </menu>
+          {tabContent}
+        </section>
+      </main>
+    </div>
+  );
+}
+
+export default App;
+```
+Here the tabcontent will not get updated visually thought it gets changed.
+This issue is because the app content is not getting reevaluated. 
+
+```jsx
+export default function TabButton({onSelect, children}){
+    return(
+        <li><button onClick={onSelect}>{children}</button></li>
+    );
+}
+```
