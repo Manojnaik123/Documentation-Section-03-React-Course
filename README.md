@@ -914,7 +914,38 @@ export default function Tabs({ buttons, children, ButtonsContainers }) {
     </>
 }
 ```
+<h2>Setting Default prop values</h2>
 
+we can add a default value to the properties like below
+
+Tabs.jsx
+```jsx
+export default function Tabs({ buttons, children, ButtonsContainers="menu" }) {
+    return <>
+        <ButtonsContainers>
+            {buttons} // slot 1
+        </ButtonsContainers>
+        {children} // slot 2
+    </>
+}
+```
+// setting custom component as a defaut value 
+
+Tabs.jsx
+```jsx
+import Section from './components/Section.jsx';
+
+export default function Tabs({ buttons, children, ButtonsContainers=Section }) {
+    return <>
+        <ButtonsContainers>
+            {buttons} // slot 1
+        </ButtonsContainers>
+        {children} // slot 2
+    </>
+}
+```
+
+and after this we do not have to set ButtonsContainers property while using the Tabs component when intending to use menu.
 
 
 
