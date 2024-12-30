@@ -779,4 +779,16 @@ Having an extra div in our website is totally unnecessary that is why we can use
 
 
 <h2>  When Should You Split Components?</h2>
+Here if we click the Buttons under examples the dynamic numer produced in the header beside fundaments also changes 
+
+![alt text](image-16.png)
+![alt text](image-17.png)
+
+This should not happen. Only the intended compoent should get rerendered 
+This is where splitting of components can help us 
+<h2> Splitting Components By Feature & State </h2>
+
+Spllitting the components this way will eliminate the full rendering as we saw above 
+
+![alt text](image-18.png)
 
