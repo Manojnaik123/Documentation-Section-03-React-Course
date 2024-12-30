@@ -688,3 +688,6 @@ This is how it is done
 ```
 
 Here it is required by react to have key for the each list ti unique identification
+
+
+<h1><b>React Essentials - Components, JSX, Props, State & more</b></h1>
