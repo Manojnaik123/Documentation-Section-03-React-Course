@@ -362,7 +362,7 @@ export default App;
 ```
 Here the tabcontent will not get updated visually thought it gets changed.
 This issue is because the app content is not getting reevaluated. 
-This is where <b>State</b> comes into play
+This is where <b style="background-color: red;">State</b> comes into play
 
 ```jsx
 export default function TabButton({onSelect, children}){
