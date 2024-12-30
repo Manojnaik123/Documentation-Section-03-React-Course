@@ -382,6 +382,134 @@ UseState must be called at the top level of the component function it should not
 
 //***** The state value showing previous value is explained at 9:26 continue from there 
 
+When we call the stateUpdating function react schedules this state updated and then reexecutes this component function. So the updated value will be visible after this component executed again. Only then the new value is availabe. 
+
+<h1>Deriving & Outputting Data Based on State</h1>
+
+This is how we can use state to output values 
+
+```jsx
+import { CORE_CONCEPTS } from './data';
+import Header from './Components/Header.jsx';
+import CoreConcepts from './Components/CoreConcepts.jsx';
+const reactDescriptions = ['Fundamental', 'Crucial', 'Core'];
+import TabButton from './Components/TabButton.jsx';
+import { EXAMPLES } from './data';
+import { useState } from 'react';
+
+function genRandomInt(max) {
+  return Math.floor(Math.random() * (max + 1));
+}
+
+function App() {
+
+  const [selectedTopic, setSelectedTopic] = useState('components');
+  // this useState will return an array with excatly 2 elements
+  // one element will be current data snapshot
+  // other one will be a function to change that current data  
+
+  function handleClick(selectedButton) {
+    //useState(); WRONG WAY TO USE THIS HOOK
+    setSelectedTopic(selectedButton);
+    console.log(selectedTopic);
+    // this log will output previsos value this is because Lec 54 9:30
+    // when we call the setSelectedTopic function 
+  }
+
+  return (
+    <div>
+      <Header />
+      <main>
+        <section id='core-concepts'>
+          <h2>Core Comcepts</h2>
+          <ul>
+            <CoreConcepts
+              title={CORE_CONCEPTS[0].title}
+              description={CORE_CONCEPTS[0].description}
+              image={CORE_CONCEPTS[0].image}
+            />
+            <CoreConcepts {...CORE_CONCEPTS[1]} />
+            <CoreConcepts {...CORE_CONCEPTS[2]} />
+            <CoreConcepts {...CORE_CONCEPTS[3]} />
+          </ul>
+        </section>
+        <section id='examples'>
+          <h2>Examples</h2>
+          <menu>
+            <TabButton onSelect={() => handleClick('components')}>Components</TabButton>
+            <TabButton onSelect={() => handleClick('jsx')}>JSX</TabButton>
+            <TabButton onSelect={() => handleClick('props')}>Props</TabButton>
+            <TabButton onSelect={() => handleClick('state')}>State</TabButton>
+          </menu>
+          <div id='tab-content'>
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>
+                {EXAMPLES[selectedTopic].code}
+              </code>
+            </pre>
+          </div>
+        </section>
+      </main>
+    </div>
+  );
+}
+
+export default App; 
+```
+```js
+export const EXAMPLES = {
+  components: {
+    title: 'Components',
+    description:
+      'Components are the building blocks of React applications. A component is a self-contained module (HTML + optional CSS + JS) that renders some output.',
+    code: `
+function Welcome() {
+  return <h1>Hello, World!</h1>;
+}`,
+  },
+  jsx: {
+    title: 'JSX',
+    description:
+      'JSX is a syntax extension to JavaScript. It is similar to a template language, but it has full power of JavaScript (e.g., it may output dynamic content).',
+    code: `
+<div>
+  <h1>Welcome {userName}</h1>
+  <p>Time to learn React!</p>
+</div>`,
+  },
+  props: {
+    title: 'Props',
+    description:
+      'Components accept arbitrary inputs called props. They are like function arguments.',
+    code: `
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}`,
+  },
+  state: {
+    title: 'State',
+    description:
+      'State allows React components to change their output over time in response to user actions, network responses, and anything else.',
+    code: `
+function Counter() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  function handleClick() {
+    setIsVisible(true);
+  }
+
+  return (
+    <div>
+      <button onClick={handleClick}>Show Details</button>
+      {isVisible && <p>Amazing details!</p>}
+    </div>
+  );
+}`,
+  },
+};
+```
 
 
 

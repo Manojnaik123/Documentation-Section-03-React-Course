@@ -3,6 +3,7 @@ import Header from './Components/Header.jsx';
 import CoreConcepts from './Components/CoreConcepts.jsx';
 const reactDescriptions = ['Fundamental', 'Crucial', 'Core'];
 import TabButton from './Components/TabButton.jsx';
+import { EXAMPLES } from './data';
 
 import { useState } from 'react';
 
@@ -13,7 +14,7 @@ function genRandomInt(max) {
 
 function App() {
 
-  const [selectedTopic, setSelectedTopic] = useState('Please ckick a button first');
+  const [selectedTopic, setSelectedTopic] = useState('components');
   // this useState will return an array with excatly 2 elements
   // one element will be current data snapshot
   // other one will be a function to change that current data  
@@ -46,16 +47,24 @@ function App() {
         <section id='examples'>
           <h2>Examples</h2>
           <menu>
-            <TabButton onSelect={() => handleClick('Components')}>Components</TabButton>
-            <TabButton onSelect={() => handleClick('JSX')}>JSX</TabButton>
-            <TabButton onSelect={() => handleClick('Props')}>Props</TabButton>
-            <TabButton onSelect={() => handleClick('State')}>State</TabButton>
+            <TabButton onSelect={() => handleClick('components')}>Components</TabButton>
+            <TabButton onSelect={() => handleClick('jsx')}>JSX</TabButton>
+            <TabButton onSelect={() => handleClick('props')}>Props</TabButton>
+            <TabButton onSelect={() => handleClick('state')}>State</TabButton>
           </menu>
-          {selectedTopic}
+          <div id='tab-content'>
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>
+                {EXAMPLES[selectedTopic].code}
+              </code>
+            </pre>
+          </div>
         </section>
       </main>
     </div>
   );
 }
 
-export default App;
+export default App;         
