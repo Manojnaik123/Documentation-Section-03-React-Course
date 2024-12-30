@@ -1,6 +1,7 @@
 import TabButton from "./TabButton.jsx";
 import { useState } from "react";
 import { EXAMPLES } from "../data.js";
+import Tabs from "./Tabs.jsx";
 
 
 export default function Examples() {
@@ -34,14 +35,16 @@ export default function Examples() {
 
     return <>
         <section id='examples'>
-            <h2>Examples</h2>
-            <menu>
-                <TabButton onSelect={() => handleClick('components')} isActive={selectedTopic === 'components'}>Components</TabButton>
+        <h2>Examples</h2>
+            <Tabs
+             buttons={<>
+             <TabButton onSelect={() => handleClick('components')} isActive={selectedTopic === 'components'}>Components</TabButton>
                 <TabButton onSelect={() => handleClick('jsx')} isActive={selectedTopic === 'jsx'}>JSX</TabButton>
                 <TabButton onSelect={() => handleClick('props')} isActive={selectedTopic === 'props'}>Props</TabButton>
                 <TabButton onSelect={() => handleClick('state')} isActive={selectedTopic === 'state'}>State</TabButton>
-            </menu>
-            {tabContent}
+             </>}>
+             {tabContent}
+             </Tabs>
         </section>
     </>
 }

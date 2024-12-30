@@ -792,3 +792,62 @@ Spllitting the components this way will eliminate the full rendering as we saw a
 
 ![alt text](image-18.png)
 
+<h2>Problem: Props Are Not Forwarded To Inner Elements</h2>
+
+Imagine a case where we are using this pattern repetidly 
+```jsx
+<section>
+  <h2>title</h2>
+  <ul>
+     {children}
+  </ul>
+</section>
+```
+In such case we can create a new element Section.jsx
+
+This element can be called and set props ann children this will further simplify the structure.
+
+Section.jsx
+```jsx
+lec 65 not so important 
+```
+<h2>Working with multiple JSX Slots</h2>
+
+
+App.js
+```jsx
+return <>
+        <section id='examples'>
+        <h2>Examples</h2>
+            <Tabs
+             buttons={<>
+             <TabButton onSelect={() => handleClick('components')} isActive={selectedTopic === 'components'}>Components</TabButton>
+                <TabButton onSelect={() => handleClick('jsx')} isActive={selectedTopic === 'jsx'}>JSX</TabButton>
+                <TabButton onSelect={() => handleClick('props')} isActive={selectedTopic === 'props'}>Props</TabButton>
+                <TabButton onSelect={() => handleClick('state')} isActive={selectedTopic === 'state'}>State</TabButton>
+             </>}>
+             {tabContent}
+             </Tabs>
+        </section>
+    </>
+```
+Tabs.jsx
+```jsx
+export default function Tabs({buttons, children}){
+    return <>
+        <menu>
+        {buttons}
+        </menu>
+        {children}
+    </>
+}
+```
+**This is how we can work with multiple JSX slots**
+
+
+
+
+
+
+
+
