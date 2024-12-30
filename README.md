@@ -657,3 +657,34 @@ export default function TabButton({onSelect, children, isActive}){
     );
 }
 ```
+
+<h1>Outputting List Data Dynamically</h1>
+
+Here we have hard coded the number os CoreConcepts components.
+
+```jsx
+<ul>
+            <CoreConcepts
+              title={CORE_CONCEPTS[0].title}
+              description={CORE_CONCEPTS[0].description}
+              image={CORE_CONCEPTS[0].image}
+            />
+            <CoreConcepts {...CORE_CONCEPTS[1]} />
+            <CoreConcepts {...CORE_CONCEPTS[2]} />
+            <CoreConcepts {...CORE_CONCEPTS[3]} />
+          </ul>
+```
+Here the code will break if we tamper with the origin data. 
+This is not a right approach insted we have to output this list dynamically
+
+This is how it is done 
+
+```jsx
+<ul>
+  {CORE_CONCEPTS.map((conceptItem)=> (
+    <CoreConcepts key={conceptItem.title} {...conceptItem} />
+  ))}
+</ul>
+```
+
+Here it is required by react to have key for the each list ti unique identification
