@@ -511,6 +511,149 @@ function Counter() {
 };
 ```
 
+<h1>Rendering Content Conditionally</h1>
 
+***We can output null in jsx file it will lead to nothing***
 
+This is how we can conditionally output the above code.
+These are the changes made to the above code.
 
+```jsx
+ const [selectedTopic, setSelectedTopic] = useState('');
+
+  <section id='examples'>
+          <h2>Examples</h2>
+          <menu>
+            <TabButton onSelect={() => handleClick('components')}>Components</TabButton>
+            <TabButton onSelect={() => handleClick('jsx')}>JSX</TabButton>
+            <TabButton onSelect={() => handleClick('props')}>Props</TabButton>
+            <TabButton onSelect={() => handleClick('state')}>State</TabButton>
+          </menu>
+          {!selectedTopic? <p>Please select a topic</p> : null}
+          {selectedTopic ? (<div id='tab-content'>
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>
+                {EXAMPLES[selectedTopic].code}
+              </code>
+            </pre>
+          </div>): null}
+        </section>
+```
+We can write this in more consise way like-
+
+```jsx
+ <section id='examples'>
+          <h2>Examples</h2>
+          <menu>
+            <TabButton onSelect={() => handleClick('components')}>Components</TabButton>
+            <TabButton onSelect={() => handleClick('jsx')}>JSX</TabButton>
+            <TabButton onSelect={() => handleClick('props')}>Props</TabButton>
+            <TabButton onSelect={() => handleClick('state')}>State</TabButton>
+          </menu>
+          {!selectedTopic && <p>Please select a topic</p>}  // here we hanve use && instead od ternary operator
+          {selectedTopic && (<div id='tab-content'>
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>
+                {EXAMPLES[selectedTopic].code}
+              </code>
+            </pre>
+          </div>)}
+        </section>
+```
+
+We can also use variable to conditionally output the above code like -
+
+```jsx
+function App() {
+
+  const [selectedTopic, setSelectedTopic] = useState('');
+  // this useState will return an array with excatly 2 elements
+  // one element will be current data snapshot
+  // other one will be a function to change that current data  
+
+  function handleClick(selectedButton) {
+    //useState(); WRONG WAY TO USE THIS HOOK
+    setSelectedTopic(selectedButton);
+    console.log(selectedTopic);
+    // this log will output previsos value this is because Lec 54 9:30
+    // when we call the setSelectedTopic function 
+  }
+
+  let tabContent = <p>Please select a topic</p>;
+
+  if(selectedTopic){
+    tabContent = <div id='tab-content'>
+    <h3>{EXAMPLES[selectedTopic].title}</h3>
+    <p>{EXAMPLES[selectedTopic].description}</p>
+    <pre>
+      <code>
+        {EXAMPLES[selectedTopic].code}
+      </code>
+    </pre>
+  </div>;
+  }
+
+  return (
+    <div>
+      <Header />
+      <main>
+        <section id='core-concepts'>
+          <h2>Core Comcepts</h2>
+          <ul>
+            <CoreConcepts
+              title={CORE_CONCEPTS[0].title}
+              description={CORE_CONCEPTS[0].description}
+              image={CORE_CONCEPTS[0].image}
+            />
+            <CoreConcepts {...CORE_CONCEPTS[1]} />
+            <CoreConcepts {...CORE_CONCEPTS[2]} />
+            <CoreConcepts {...CORE_CONCEPTS[3]} />
+          </ul>
+        </section>
+        <section id='examples'>
+          <h2>Examples</h2>
+          <menu>
+            <TabButton onSelect={() => handleClick('components')}>Components</TabButton>
+            <TabButton onSelect={() => handleClick('jsx')}>JSX</TabButton>
+            <TabButton onSelect={() => handleClick('props')}>Props</TabButton>
+            <TabButton onSelect={() => handleClick('state')}>State</TabButton>
+          </menu>
+          {tabContent}
+        </section>
+      </main>
+    </div>
+  );
+}
+
+export default App;         
+```
+
+<h1>CSS Styling & Dynamic Styling</h1>
+
+In regular html we use (class) for elements however in jsx we will use (className).
+
+We can dynamically set the styling using this approach-
+
+```jsx
+ <section id='examples'>
+          <h2>Examples</h2>
+          <menu>
+            <TabButton onSelect={() => handleClick('components')} isActive={selectedTopic==='components'}>Components</TabButton>
+            <TabButton onSelect={() => handleClick('jsx')} isActive={selectedTopic==='jsx'}>JSX</TabButton>
+            <TabButton onSelect={() => handleClick('props')} isActive={selectedTopic==='props'}>Props</TabButton>
+            <TabButton onSelect={() => handleClick('state')} isActive={selectedTopic==='state'}>State</TabButton>
+          </menu>
+          {tabContent}
+        </section>
+```
+```jsx
+export default function TabButton({onSelect, children, isActive}){
+    return(
+        <li><button className={isActive? 'active': undefined} onClick={onSelect}>{children}</button></li>
+    );
+}
+```
